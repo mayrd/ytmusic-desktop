@@ -1,6 +1,11 @@
 # ytmusic-desktop
 UNOFFICIAL: YouTube Music as a desktop application which you can control with your media keys.
 
+## Binaries
+
+- Mac OS X: https://github.com/mayrd/ytmusic-desktop/releases/download/v0.0.1-alpha/ytmusic-OSX.zip
+- Windows (64bit): https://github.com/mayrd/ytmusic-desktop/releases/download/v0.0.1-alpha/ytmusic-win64.zip
+
 ## Usage
 When you start the app, it opens https://music.youtube.com. In order to use it properly, login with your Google account.
 After you started you can simply use your Media Keys on your Keyboard or use the alternative key mapping.
