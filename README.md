@@ -1,5 +1,5 @@
 # ytmusic-desktop
-UNOFFICIAL: Enjoy YouTube Music as a desktop application which you can control with your media keys.
+UNOFFICIAL: YouTube Music as a desktop application which you can control with your media keys.
 
 ## Usage
 When you start the app, it opens music.youtube.com. In order to use it properly, login with your Google account.
