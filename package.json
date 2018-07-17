@@ -1,0 +1,12 @@
+{
+  "name": "ytmusic",
+  "version": "0.1.0",
+  "description": "YouTube Music",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^2.0.5"
+  }
+}
