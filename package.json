@@ -1,7 +1,8 @@
 {
   "name": "ytmusic",
-  "version": "0.1.0",
-  "description": "YouTube Music",
+  "version": "0.0.1",
+  "description": "Unofficial YouTube Music Desktop Application",
+  "appId": "org.mayrd.ytmusic",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
