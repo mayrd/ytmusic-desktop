@@ -6,8 +6,8 @@ When you start the app, it opens music.youtube.com. In order to use it properly,
 
 | Function | Key | Alternative Key |
 |----------|-----|-----------------|
-|Play or Pause Playback| Play Pause Media Key | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>|
+|Play or Pause Playback| ⏯ Play Pause Media Key | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>|
 |Next Song| Next Media Key | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>→</kbd>|
 |Previous Song| Previous Media Key | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>←</kbd>|
-|Thumbs Up| - | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Up</kbd>|
-|Thumbs Down| - | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Down</kbd>|
+|Thumbs Up| - | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>↑</kbd>|
+|Thumbs Down| - | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>↓</kbd>|
