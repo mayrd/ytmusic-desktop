@@ -19,4 +19,4 @@ After you started you can simply use your Media Keys on your Keyboard or use the
 |Thumbs Down| - | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>↓</kbd>|
 
 ## Build yourself
-The application is built with electron (http://electronjs.org). Install nodejs, download the package and run `npm start`
+The application is built with electron (http://electronjs.org). Install nodejs, download the package, install packages with `npm install` and run `npm start`.
