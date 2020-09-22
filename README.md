@@ -22,5 +22,7 @@ The application is built with electron (http://electronjs.org). Install nodejs, 
 
 ### Looking for an Installer?
 Build the packages with `npm run build-mac64` or `npm run build-linux64` or `npm run build-win32`.
+
 If you need .dmg, .deb or anything related, use the specific installer, i.e. (install with `npm electron-installer-debian -g`):
+
 `electron-installer-debian --src release-builds/ytmusic-linux-x64/ --dest release-builds/ --arch amd64 --icon media/logo.png`
