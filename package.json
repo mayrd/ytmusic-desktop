@@ -5,7 +5,7 @@
   "appId": "org.mayrd.ytmusic",
   "main": "main.js",
   "devDependencies": {
-    "electron": "^10.1.2",
+    "electron": "^7.2.4",
     "electron-packager": "^14.1.1"
   },
   "scripts": {
