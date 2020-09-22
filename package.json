@@ -3,6 +3,10 @@
   "version": "0.0.3",
   "description": "Unofficial YouTube Music Desktop Application",
   "appId": "org.mayrd.ytmusic",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mayrd/ytmusic-desktop.git"
+  },
   "main": "main.js",
   "devDependencies": {
     "electron": "^10.1.2",
