@@ -3,8 +3,7 @@ UNOFFICIAL: YouTube Music as a desktop application which you can control with yo
 
 ## Binaries
 
-- Mac OS X: https://github.com/mayrd/ytmusic-desktop/releases/download/v0.0.2/ytmusic-darwin-x64.zip
-- Windows (64bit): https://github.com/mayrd/ytmusic-desktop/releases/download/v0.0.1-alpha/ytmusic-win64.zip
+Find the latest binaries (mac, win, linux 64) in https://github.com/mayrd/ytmusic-desktop/releases
 
 ## Usage
 When you start the app, it opens https://music.youtube.com. In order to use it properly, login with your Google account.
