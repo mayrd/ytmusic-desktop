@@ -6,7 +6,7 @@ const {app, BrowserWindow, Menu, globalShortcut} = require('electron')
     Menu.setApplicationMenu(null)
     win = new BrowserWindow({width: 8000, height: 6000, fullscreenable: true, images: true})
     win.maximize()
-    win.loadURL("https://music.youtube.com")
+    win.loadURL("https://music.youtube.com", { userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.98 Safari/537.36 Edg/85.0.100.0"})
     win.on('closed', () => {
       win = null
     })
