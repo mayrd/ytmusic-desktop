@@ -14,8 +14,8 @@
   },
   "scripts": {
     "start": "electron .",
-    "package-mac": "electron-packager . ytmusic --overwrite --platform=darwin --arch=x64 --icon=media/logo.png --prune=true --out=release-builds",
-    "package-win": "electron-packager . ytmusic --overwrite --asar=true --platform=win32 --arch=ia32 --icon=media/logo.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"YouTube Music\"",
-    "package-linux": "electron-packager . ytmusic --overwrite --asar=true --platform=linux --arch=x64 --icon=media/logo.png --prune=true --out=release-builds"
+    "build-mac64": "electron-packager . ytmusic --overwrite --platform=darwin --arch=x64 --icon=media/logo.png --prune=true --out=release-builds",
+    "build-win32": "electron-packager . ytmusic --overwrite --asar=true --platform=win32 --arch=ia32 --icon=media/logo.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"YouTube Music\"",
+    "build-linux64": "electron-packager . ytmusic --overwrite --asar=true --platform=linux --arch=x64 --icon=media/logo.png --prune=true --out=release-builds"
   }
 }
