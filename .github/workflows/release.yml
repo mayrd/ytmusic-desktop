@@ -10,102 +10,136 @@ permissions:
   contents: write
 
 jobs:
-  build-linux:
+  build-linux-x64:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install dependencies
-        run: npm ci || npm install --legacy-peer-deps
-      - name: Build Linux x64
+      - run: npm ci || npm install --legacy-peer-deps
+      - name: Build
         run: npx electron-builder --linux --x64 --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build Linux arm64
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-x64
+          path: dist/
+          if-no-files-found: error
+
+  build-linux-arm64:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci || npm install --legacy-peer-deps
+      - name: Build
         run: npx electron-builder --linux --arm64 --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v4
+      - name: Upload
+        uses: actions/upload-artifact@v4
         with:
-          name: linux-builds
-          path: dist/*.{AppImage,deb}
-          if-no-files-found: warn
+          name: linux-arm64
+          path: dist/
+          if-no-files-found: error
 
-  build-windows:
+  build-win-x64:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install dependencies
-        run: npm ci || npm install --legacy-peer-deps
-      - name: Build Windows x64
+      - run: npm ci || npm install --legacy-peer-deps
+      - name: Build
         run: npx electron-builder --win --x64 --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build Windows arm64
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: win-x64
+          path: dist/
+          if-no-files-found: error
+
+  build-win-arm64:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci || npm install --legacy-peer-deps
+      - name: Build
         run: npx electron-builder --win --arm64 --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v4
+      - name: Upload
+        uses: actions/upload-artifact@v4
         with:
-          name: windows-builds
-          path: dist/{*.exe,*.exe.blockmap}
-          if-no-files-found: warn
+          name: win-arm64
+          path: dist/
+          if-no-files-found: error
 
-  build-mac:
+  build-mac-x64:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install dependencies
-        run: npm ci || npm install --legacy-peer-deps
-      - name: Build macOS x64
+      - run: npm ci || npm install --legacy-peer-deps
+      - name: Build
         run: npx electron-builder --mac --x64 --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build macOS arm64
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: mac-x64
+          path: dist/
+          if-no-files-found: error
+
+  build-mac-arm64:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci || npm install --legacy-peer-deps
+      - name: Build
         run: npx electron-builder --mac --arm64 --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v4
+      - name: Upload
+        uses: actions/upload-artifact@v4
         with:
-          name: mac-builds
-          path: dist/{*.dmg,*.dmg.blockmap,*-mac.zip}
-          if-no-files-found: warn
+          name: mac-arm64
+          path: dist/
+          if-no-files-found: error
 
   release:
-    needs: [build-linux, build-windows, build-mac]
+    needs: [build-linux-x64, build-linux-arm64, build-win-x64, build-win-arm64, build-mac-x64, build-mac-arm64]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Get version
         id: ver
         run: echo "VERSION=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
-      - name: Download Linux artifacts
+      - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          name: linux-builds
-          path: release-assets/
-      - name: Download Windows artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: windows-builds
-          path: release-assets/
-      - name: Download macOS artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: mac-builds
-          path: release-assets/
-      - name: List downloaded files
-        run: |
-          mkdir -p release-assets
-          find release-assets -type f 2>/dev/null || echo "No artifact files found"
+          pattern: "*-*"
+          path: release-assets
+          merge-multiple: true
+      - name: List artifacts
+        run: find release-assets -type f 2>/dev/null | head -30 || echo "No files"
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
