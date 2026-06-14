@@ -84,7 +84,9 @@
     },
     "electronDownload": {
       "mirror": "https://github.com/electron/electron/releases/download/"
-    }
+    },
+    "npmRebuild": false,
+    "asar": true
   },
   "scripts": {
     "start": "electron .",
@@ -95,5 +97,6 @@
   },
   "engines": {
     "node": ">=20.0.0"
-  }
+  },
+  "author": "Daniel Mayr <dg.mayr@gmail.com>"
 }
