@@ -87,19 +87,31 @@ jobs:
       - name: Get version
         id: ver
         run: echo "VERSION=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
-      - name: Download all artifacts
+      - name: Download Linux artifacts
         uses: actions/download-artifact@v4
         with:
-          path: release-assets
-          merge-multiple: true
+          name: linux-builds
+          path: release-assets/
+      - name: Download Windows artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-builds
+          path: release-assets/
+      - name: Download macOS artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: mac-builds
+          path: release-assets/
       - name: List downloaded files
-        run: find release-assets -type f
+        run: |
+          mkdir -p release-assets
+          find release-assets -type f 2>/dev/null || echo "No artifact files found"
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.ver.outputs.VERSION }}
           name: YouTube Music Desktop v${{ steps.ver.outputs.VERSION }}
-          files: release-assets/*
+          files: release-assets/
           generate_release_notes: true
           fail_on_unmatched_files: false
         env:
