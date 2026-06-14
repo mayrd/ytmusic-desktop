@@ -1,28 +1,124 @@
-# ytmusic-desktop
-UNOFFICIAL: YouTube Music as a desktop application which you can control with your media keys.
+# YouTube Music Desktop
 
-## Binaries
+Unofficial YouTube Music Desktop Application built with Electron.
 
-Find the latest binaries (mac, win, linux 64) in https://github.com/mayrd/ytmusic-desktop/releases
+## Features
 
-## Usage
-When you start the app, it opens https://music.youtube.com. In order to use it properly, login with your Google account.
-After you started you can simply use your Media Keys on your Keyboard or use the alternative key mapping.
+- **Global keyboard shortcuts** — control playback from anywhere
+- **Media key support** — standard media keys (Play/Pause/Next/Previous)
+- **Configurable shortcuts** — customize or disable shortcuts via config file
+- **Cross-platform** — Windows, macOS, Linux (x64 + arm64)
 
-| Function | Key | Alternative Key |
-|----------|-----|-----------------|
-|Play or Pause Playback| ⏯ | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>|
-|Next Song| ⏭ | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>→</kbd>|
-|Previous Song| ⏮ | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>←</kbd>|
-|Thumbs Up| - | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>↑</kbd>|
-|Thumbs Down| - | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>↓</kbd>|
+## Installation
 
-## Build yourself
-The application is built with electron (http://electronjs.org). Install nodejs, download the package, install packages with `npm install` and run `npm start`.
+Download the latest release for your platform from the [Releases](https://github.com/mayrd/ytmusic-desktop/releases) page.
 
-### Looking for an Installer?
-Build the packages with `npm run build-mac64` or `npm run build-linux64` or `npm run build-win32`.
+### Linux
+- `.AppImage` — run directly, no installation needed
+- `.deb` — install with `sudo dpkg -i ytmusic_*.deb`
 
-If you need .dmg, .deb or anything related, use the specific installer, i.e. (install with `npm electron-installer-debian -g`):
+### Windows
+- `.exe` (NSIS installer) — run the installer
+- `.exe` (portable) — run directly
 
-`electron-installer-debian --src release-builds/ytmusic-linux-x64/ --dest release-builds/ --arch amd64 --icon media/logo.png`
+### macOS
+- `.dmg` — open and drag to Applications
+
+## Keyboard Shortcuts
+
+### Default Shortcuts
+
+| Action | Shortcut |
+|--------|----------|
+| Previous | `Ctrl+Shift+Left` |
+| Play/Pause | `Ctrl+Shift+Enter` |
+| Next | `Ctrl+Shift+Right` |
+| Thumbs Up | `Ctrl+Shift+Up` |
+| Thumbs Down | `Ctrl+Shift+Down` |
+
+Media keys (`MediaPreviousTrack`, `MediaPlayPause`, `MediaNextTrack`) are also supported and can be disabled independently.
+
+## Configuration
+
+Shortcuts are configured via `~/.config/ytmusic-desktop/config.json`.
+
+On first launch, a default config file is created automatically. Edit this file to customize shortcuts or disable them entirely.
+
+### Example config
+
+```json
+{
+  "shortcuts": {
+    "enabled": true,
+    "previous": "CommandOrControl+Shift+Left",
+    "playPause": "CommandOrControl+Shift+Enter",
+    "next": "CommandOrControl+Shift+Right",
+    "thumbsUp": "CommandOrControl+Shift+Up",
+    "thumbsDown": "CommandOrControl+Shift+Down"
+  },
+  "mediaKeys": {
+    "enabled": true
+  },
+  "window": {
+    "width": 8000,
+    "height": 6000,
+    "maximize": true
+  }
+}
+```
+
+### Disable all alternative shortcuts
+
+Set `shortcuts.enabled` to `false`:
+
+```json
+{
+  "shortcuts": {
+    "enabled": false
+  }
+}
+```
+
+### Disable only media keys
+
+```json
+{
+  "mediaKeys": {
+    "enabled": false
+  }
+}
+```
+
+### Custom shortcut keys
+
+Change any shortcut to a valid [Electron accelerator](https://www.electronjs.org/docs/latest/api/accelerator):
+
+```json
+{
+  "shortcuts": {
+    "previous": "Alt+Left",
+    "playPause": "Alt+Space",
+    "next": "Alt+Right"
+  }
+}
+```
+
+## Development
+
+```bash
+npm install
+npm start
+```
+
+### Build
+
+```bash
+npm run dist          # Build all platforms
+npm run dist:linux    # Build Linux only
+npm run dist:win      # Build Windows only
+npm run dist:mac      # Build macOS only
+```
+
+## License
+
+MIT

@@ -1,6 +1,6 @@
 {
   "name": "ytmusic",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Unofficial YouTube Music Desktop Application",
   "appId": "org.mayrd.ytmusic",
   "repository": {
@@ -22,7 +22,8 @@
     },
     "files": [
       "main.js",
-      "package.json"
+      "package.json",
+      "config/config.json"
     ],
     "linux": {
       "target": [

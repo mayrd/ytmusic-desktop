@@ -1,0 +1,18 @@
+{
+  "shortcuts": {
+    "enabled": true,
+    "previous": "CommandOrControl+Shift+Left",
+    "playPause": "CommandOrControl+Shift+Enter",
+    "next": "CommandOrControl+Shift+Right",
+    "thumbsUp": "CommandOrControl+Shift+Up",
+    "thumbsDown": "CommandOrControl+Shift+Down"
+  },
+  "mediaKeys": {
+    "enabled": true
+  },
+  "window": {
+    "width": 8000,
+    "height": 6000,
+    "maximize": true
+  }
+}
