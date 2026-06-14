@@ -81,11 +81,14 @@
     "publish": {
       "provider": "github",
       "releaseType": "release"
+    },
+    "electronDownload": {
+      "mirror": "https://github.com/electron/electron/releases/download/"
     }
   },
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder",
+    "dist": "electron-builder --mac --win --linux --x64 --arm64",
     "dist:linux": "electron-builder --linux",
     "dist:win": "electron-builder --win",
     "dist:mac": "electron-builder --mac"
