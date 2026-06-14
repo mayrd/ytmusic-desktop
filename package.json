@@ -1,6 +1,6 @@
 {
   "name": "ytmusic",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Unofficial YouTube Music Desktop Application",
   "appId": "org.mayrd.ytmusic",
   "repository": {
@@ -9,8 +9,8 @@
   },
   "main": "main.js",
   "devDependencies": {
-    "electron": "^10.1.2",
-    "electron-packager": "^15.1.0"
+    "electron": "^39.0.0",
+    "electron-packager": "^17.1.2"
   },
   "scripts": {
     "start": "electron .",
