@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 22
       - name: Install dependencies
-        run: npm ci
+        run: npm ci || npm install --legacy-peer-deps
       - name: Build Linux x64
         run: npx electron-builder --linux --x64 --publish never
         env:
@@ -41,7 +41,7 @@ jobs:
         with:
           node-version: 22
       - name: Install dependencies
-        run: npm ci
+        run: npm ci || npm install --legacy-peer-deps
       - name: Build Windows x64
         run: npx electron-builder --win --x64 --publish never
         env:
@@ -64,7 +64,7 @@ jobs:
         with:
           node-version: 22
       - name: Install dependencies
-        run: npm ci
+        run: npm ci || npm install --legacy-peer-deps
       - name: Build macOS x64
         run: npx electron-builder --mac --x64 --publish never
         env:
