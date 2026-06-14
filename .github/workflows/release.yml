@@ -145,7 +145,14 @@ jobs:
         with:
           tag_name: v${{ steps.ver.outputs.VERSION }}
           name: YouTube Music Desktop v${{ steps.ver.outputs.VERSION }}
-          files: release-assets/
+          files: |
+            release-assets/*.AppImage
+            release-assets/*.deb
+            release-assets/*.exe
+            release-assets/*.exe.blockmap
+            release-assets/*.dmg
+            release-assets/*.dmg.blockmap
+            release-assets/*.zip
           generate_release_notes: true
           fail_on_unmatched_files: false
         env:
