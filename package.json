@@ -10,7 +10,7 @@
   "main": "main.js",
   "devDependencies": {
     "electron": "^39.2.0",
-    "electron-builder": "^25.1.8"
+    "electron-builder": "^26.15.3"
   },
   "dependencies": {},
   "build": {
