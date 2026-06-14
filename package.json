@@ -10,13 +10,85 @@
   "main": "main.js",
   "devDependencies": {
     "electron": "^39.2.0",
-    "electron-packager": "^17.1.2"
+    "electron-builder": "^25.1.8"
+  },
+  "dependencies": {},
+  "build": {
+    "appId": "org.mayrd.ytmusic",
+    "productName": "YouTube Music",
+    "artifactName": "${productName}-${version}-${arch}.${ext}",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "package.json"
+    ],
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "AudioVideo"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ]
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "public.app-category.music"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    },
+    "publish": {
+      "provider": "github",
+      "releaseType": "release"
+    }
   },
   "scripts": {
     "start": "electron .",
-    "build-mac64": "electron-packager . ytmusic --overwrite --platform=darwin --arch=x64 --icon=media/logo.png --prune=true --out=release-builds",
-    "build-win32": "electron-packager . ytmusic --overwrite --asar=true --platform=win32 --arch=ia32 --icon=media/logo.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"YouTube Music\"",
-    "build-linux64": "electron-packager . ytmusic --overwrite --asar=true --platform=linux --arch=x64 --icon=media/logo.png --prune=true --out=release-builds"
+    "dist": "electron-builder",
+    "dist:linux": "electron-builder --linux",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac"
   },
   "engines": {
     "node": ">=20.0.0"
